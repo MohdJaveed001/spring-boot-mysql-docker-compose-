@@ -1,0 +1,22 @@
+---
+version: "4"
+service: 
+application:
+  image: spring-boot-mysql-app
+  network:
+    - springboot-database-net
+  ports: "8080:8080"
+  dependes_on: 
+   - mysqldb
+mysqldb:
+  image: mysql:5.7
+  network: 
+    - springboot-database-net
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DTATBASE=sbms
+network:
+  springboot-database-net:
+
+...
+
